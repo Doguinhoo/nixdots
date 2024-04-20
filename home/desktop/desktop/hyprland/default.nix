@@ -14,7 +14,7 @@
   catppuccin_border = "rgba(b4befeee)";
   opacity = "0.95";
   transparent_gray = "rgba(666666AA)";
-  cursor = "macOS-BigSur";
+  #cursor = "macOS-BigSur";
 in {
   home.packages = with pkgs; [
     grim
@@ -46,7 +46,6 @@ in {
       dunst &
 
       # Cursor
-      #hyprctl setcursor "${cursor}" 32 # "Catppuccin-Mocha-Mauve-Cursors"
 
       # Others
       /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
