@@ -4,13 +4,13 @@ _: {
     #./brave
     ./discord
     # ./davinci-resolve
-    # ./firefox
+    ./firefox
     # ./floorp
     #./insomnia
     ./misc
     #./obs
     ./spicetify
     # ./steam
-    # ./vscode
+    ./vscode
   ];
 }
