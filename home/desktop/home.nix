@@ -31,31 +31,7 @@
     };
     overlays = with inputs; [
       # neovim-nightly-overlay.overlay
-      (
-        final: prev: {
-          sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation {
-            pname = "sf-mono-liga-bin";
-            version = "dev";
-            src = sf-mono-liga-src;
-            dontConfigure = true;
-            installPhase = ''
-              mkdir -p $out/share/fonts/opentype
-              cp -R $src/*.otf $out/share/fonts/opentype/
-            '';
-          };
-
-          monolisa-script = prev.stdenvNoCC.mkDerivation {
-            pname = "monolisa";
-            version = "dev";
-            src = monolisa-script;
-            dontConfigure = true;
-            installPhase = ''
-              mkdir -p $out/share/fonts/opentype
-              cp -R $src/*.ttf $out/share/fonts/opentype/
-            '';
-          };
-        }
-      )
+      
     ];
   };
 

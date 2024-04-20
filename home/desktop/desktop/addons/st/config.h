@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Monolisa:pixelsize=13:style=Medium Italic:antialias=true";
+static char *font = "JetBrainsMono Nerd Font:pixelsize=13:style=Medium Italic:antialias=true";
 /* static char *font = "Liga SFMono Nerd
  * Font:pixelsize=16:style=Bold:antialias=true"; */
 

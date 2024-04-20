@@ -15,19 +15,19 @@ in {
       font = {
         size = 13;
         normal = {
-          family = "MonoLisa";
+          family = "JetBrainsMono Nerd Font";
           style = "Medium Italic";
         };
         bold = {
-          family = "MonoLisa";
+          family = "JetBrainsMono Nerd Font";
           style = "Bold";
         };
         italic = {
-          family = "MonoLisa";
+          family = "JetBrainsMono Nerd Font";
           style = "Italic";
         };
         bold_italic = {
-          family = "MonoLisa";
+          family = "JetBrainsMono Nerd Font";
           style = "Bold Italic";
         };
         offset = {

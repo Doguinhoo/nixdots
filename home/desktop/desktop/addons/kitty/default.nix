@@ -7,14 +7,14 @@
     };
     theme = "Catppuccin-Mocha";
     font = {
-      # name = "MonoLisa";
+      # name = "JetBrainsMono Nerd Font";
       name = "JetBrainsMono Nerd Font";
       size = 13;
-      # package = pkgs.monolisa-script;
+      # package = pkgs.JetBrainsMono Nerd Font-script;
     };
-    # https://www.monolisa.dev/faq#how-to-enable-stylistic-sets-for-the-kitty-terminal
+    # https://www.JetBrainsMono Nerd Font.dev/faq#how-to-enable-stylistic-sets-for-the-kitty-terminal
     extraConfig = ''
-      font_features MonoLisa -calt +liga +zero +ss01 +ss02 +ss07 +ss08 +ss10 +ss11 +ss18
+      font_features JetBrainsMono Nerd Font -calt +liga +zero +ss01 +ss02 +ss07 +ss08 +ss10 +ss11 +ss18
       modify_font cell_width 100%
       modify_font cell_height 100%
     '';

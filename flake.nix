@@ -30,10 +30,7 @@
       flake = false;
     };
 
-    #monolisa-script = {
-    #  url = "github:redyf/test2";
-    #  flake = false;
-    #};
+    
   };
 
   outputs = {
