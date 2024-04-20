@@ -1,7 +1,7 @@
 {inputs, ...}: {
   home = {
-    username = "redyf";
-    homeDirectory = "/home/redyf";
+    username = "lucas";
+    homeDirectory = "/home/lucas";
     stateVersion = "22.11";
   };
 
@@ -65,4 +65,16 @@
   home.sessionPath = [
     "$HOME/.local/bin"
   ];
+
+  
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = ["thunar.desktop"];
+      "image/jpeg" = ["org.xfce.ristretto.desktop"];
+      "image/jpg" = ["org.xfce.ristretto.desktop"];
+      "image/png" = ["org.xfce.ristretto.desktop"];
+      "text/plain" = ["org.xfce.mousepad.desktop"];
+    };
+  };
 }

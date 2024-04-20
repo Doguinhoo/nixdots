@@ -100,9 +100,9 @@
 
   users = {
     users = {
-      redyf = {
+      lucas = {
         isNormalUser = true;
-        description = "redyf";
+        description = "lucas";
         initialPassword = "123456";
         shell = pkgs.zsh;
         extraGroups = ["networkmanager" "wheel" "input" "docker" "kvm" "libvirtd"];
@@ -120,7 +120,7 @@
       enable = true;
       extraRules = [
         {
-          users = ["redyf"];
+          users = ["lucas"];
           keepEnv = true;
           persist = true;
         }
@@ -274,26 +274,26 @@
         variant = "";
         layout = "br";
       };
-      videoDrivers = ["nvidia"];
+      #videoDrivers = ["nvidia"];
     };
     logmein-hamachi.enable = false;
     flatpak.enable = false;
-    autorandr = {
-      enable = true;
-      profiles = {
-        redyf = {
-          config = {
-            DP-0 = {
-              enable = true;
-              primary = true;
-              mode = "1920x1080";
-              rate = "165.00";
-              position = "0x0";
-            };
-          };
-        };
-      };
-    };
+    #autorandr = {
+    #  enable = true;
+    #  profiles = {
+    #    lucas = {
+    #      config = {
+            #DP-0 = {
+            #  enable = true;
+            #  primary = true;
+            #  mode = "1920x1080";
+            #  rate = "165.00";
+            #  position = "0x0";
+            #};
+     #     };
+     #   };
+     # };
+    #};
   };
 
   environment.systemPackages = with pkgs; [
