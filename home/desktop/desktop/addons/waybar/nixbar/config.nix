@@ -31,7 +31,9 @@ in {
     modules-right = [
       "custom/notification"
       "tray"
-      "battery"
+      "cpu"
+      #"battery"
+      "memory"
       "pulseaudio"
       "network"
       "clock"
@@ -60,7 +62,7 @@ in {
     "cava#left" = {
       framerate = 60;
       autosens = 0;
-      sensitivity = 5;
+      sensitivity = 15;
       bars = 16;
       lower_cutoff_freq = 50;
       higher_cutoff_freq = 10000;
@@ -86,7 +88,7 @@ in {
     "cava#right" = {
       framerate = 60;
       autosens = 0;
-      sensitivity = 5;
+      sensitivity = 15;
       bars = 16;
       lower_cutoff_freq = 50;
       higher_cutoff_freq = 10000;
@@ -162,7 +164,7 @@ in {
     cpu = {
       format = "󰻠 {usage}%";
       format-alt = "󰻠 {avg_frequency} GHz";
-      interval = 5;
+      interval = 4;
     };
     network = {
       format-wifi = "  {signalStrength}%";
