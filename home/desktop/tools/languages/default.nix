@@ -11,6 +11,6 @@ _: {
     # ./markdown
      ./python
     ./rust
-    ./sql
+    #./sql
   ];
 }
