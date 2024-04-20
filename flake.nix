@@ -73,7 +73,7 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = false;
-                extraSpecialArgs = {inherit inputs spicetify-nix disko;};
+                extraSpecialArgs = {inherit inputs spicetify-nix ;};
                 users.lucas = ./home/desktop/home.nix;
               };
             }
