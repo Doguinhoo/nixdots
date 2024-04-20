@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    flutter
-    android-studio
+    #flutter
+    #android-studio
   ];
 
   # Sets up all the libraries to load for the flutter build, otherwise the emulators won't work
