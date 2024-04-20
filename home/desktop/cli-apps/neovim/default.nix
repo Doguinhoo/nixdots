@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home = {
     packages = with pkgs; [
-      neovim
+      #neovim
       lazygit
       stylua
       sumneko-lua-language-server
