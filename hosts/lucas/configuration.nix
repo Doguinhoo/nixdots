@@ -25,6 +25,7 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
   boot = {
@@ -208,9 +209,7 @@ in {
     };
   };
 
-  services.fstrim.enable = true;
-  services.gvfs.enable = true;
-  services.onedrive.enable = true;
+  
 
   programs = {
     gamemode = {
@@ -229,6 +228,19 @@ in {
 
   # Change systemd stop job timeout in NixOS configuration (Default = 90s)
   systemd = {
+     user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
     services.NetworkManager-wait-online.enable = false;
     extraConfig = ''
       DefaultTimeoutStopSec=10s
@@ -244,6 +256,9 @@ in {
   # Configure keymap in X11
   sound.enable = true;
   services = {
+    fstrim.enable = true;
+    gvfs.enable = true;
+    onedrive.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -252,6 +267,16 @@ in {
       jack.enable = false;
       pulse.enable = true;
       audio.enable = true;
+      lowLatency = {
+        # enable this module
+        enable = true;
+        # defaults (no need to be set unless modified)
+    };
+    };
+
+    displayManager = {
+      defaultSession = "hyprland";
+      autoLogin.user = "lucas";
     };
 
     sshd.enable = true;

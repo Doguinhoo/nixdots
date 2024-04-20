@@ -30,6 +30,8 @@
       flake = false;
     };
 
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     
   };
 
