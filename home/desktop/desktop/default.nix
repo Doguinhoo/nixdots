@@ -4,6 +4,6 @@ _: {
     ./gtk
     ./hyprland
     # ./awesomewm.nix
-    ./xmonad.nix
+    #./xmonad.nix
   ];
 }

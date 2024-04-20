@@ -251,15 +251,15 @@
             # luadbi-mysql
           ];
         };
-        xmonad = {
-          enable = true;
-          enableContribAndExtras = true;
-          enableConfiguredRecompile = false;
-          extraPackages = hpkgs: [
-            hpkgs.xmobar
-          ];
-          config = builtins.readFile ../../home/desktop/desktop/xmonad/xmonad.hs;
-        };
+        #xmonad = {
+        #  enable = true;
+        #  enableContribAndExtras = true;
+        #  enableConfiguredRecompile = false;
+        #  extraPackages = hpkgs: [
+        #    hpkgs.xmobar
+        #  ];
+        #  config = builtins.readFile ../../home/desktop/desktop/xmonad/xmonad.hs;
+        #};
       };
       libinput = {
         enable = true;
