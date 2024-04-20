@@ -7,5 +7,9 @@ _: {
     # ./intellij
     ./languages
     ./nix-ld
+    ./r_l
+    ./ran_name
+    ./conv
+    ./catsay
   ];
 }

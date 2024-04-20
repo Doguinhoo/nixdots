@@ -1,10 +1,10 @@
 _: {
   imports = [
-    # ./alacritty
+    ./alacritty
     # ./bemenu
     # ./foot
     ./kitty
-    # ./rofi
+    ./rofi
     # ./st
     ./swww
     ./waybar

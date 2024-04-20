@@ -7,7 +7,7 @@ _: {
     # ./helix
     ./jq
     ./neovim
-    # ./neve
+    ./neve
     ./ripgrep
     ./rm-improved
     ./starship

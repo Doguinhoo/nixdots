@@ -14,7 +14,7 @@
   catppuccin_border = "rgba(b4befeee)";
   opacity = "0.95";
   transparent_gray = "rgba(666666AA)";
-  cursor = "macOS-BigSur";
+  #cursor = "macOS-BigSur";
 in {
   home.packages = with pkgs; [
     grim
@@ -46,7 +46,6 @@ in {
       dunst &
 
       # Cursor
-      hyprctl setcursor "${cursor}" 32 # "Catppuccin-Mocha-Mauve-Cursors"
 
       # Others
       /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -62,7 +61,8 @@ in {
     settings = {
       "$mainMod" = "SUPER";
       monitor = [
-        ",highrr,auto,auto"
+        "DP-1, 2560x1440@165, 1920x0, 1"
+        "DP-3, 1920x1080@165, 0x0, 1"
       ];
 
       xwayland = {
@@ -77,9 +77,9 @@ in {
         kb_rules = "";
 
         follow_mouse = 1;
-        repeat_delay = 140;
-        repeat_rate = 30;
-        numlock_by_default = 1;
+        repeat_delay = 300;
+        repeat_rate = 25;
+        numlock_by_default = true;
         accel_profile = "flat";
         sensitivity = 0;
         force_no_accel = 1;
@@ -140,7 +140,8 @@ in {
 
       misc = {
         vfr = true; # misc:no_vfr -> misc:vfr. bool, heavily recommended to leave at default on. Saves on CPU usage.
-        vrr = false; # misc:vrr -> Adaptive sync of your monitor. 0 (off), 1 (on), 2 (fullscreen only). Default 0 to avoid white flashes on select hardware.
+        vrr = 2; # misc:vrr -> Adaptive sync of your monitor. 0 (off), 1 (on), 2 (fullscreen only). Default 0 to avoid white flashes on select hardware.
+        mouse_move_enables_dpms = true;
       };
 
       dwindle = {
@@ -174,10 +175,15 @@ in {
         "autostart"
         "easyeffects --gapplication-service" # Starts easyeffects in the background
         "xwaylandvideobridge"
+        "steam -silent"
+        "xhost +SI:localuser:root"
+        "[workspace 1 silent] firefox"
+        "[workspace 2 silent] alacritty"
+        "[workspace 3 silent] thunar"
       ];
 
       bind = [
-        "SUPER,Q,killactive,"
+        "CTRL,Q,killactive,"
         "SUPER,M,exit,"
         "SUPER,S,togglefloating,"
         "SUPER,g,togglegroup"
@@ -239,7 +245,7 @@ in {
         "SUPER $mainMod SHIFT, 7, movetoworkspacesilent, 7"
         "SUPER $mainMod SHIFT, 8, movetoworkspacesilent, 8"
 
-        "SUPER,RETURN,exec,kitty"
+        "SUPER,T,exec,alacritty"
         "SUPER,n,exec,neovide"
         "SUPER,e,exec,emacsclient -c -a 'emacs'"
         ",Print,exec,screenshot"
@@ -248,7 +254,25 @@ in {
         "SUPER,z,exec,waybar"
         # "SUPER,space,exec,bemenu-run"
         # "SUPER,space,exec, tofi-drun --drun-launch=true"
-        "SUPER,space,exec,wofi --show drun -I -s ~/.config/wofi/style.css DP-3"
+        "CTRL,space,exec,wofi --show drun -I -s ~/.config/wofi/style.css DP-3"
+
+        #Move monitor
+        "ALT SHIFT, 1, movecurrentworkspacetomonitor, DP-3"
+        "ALT SHIFT, 2, movecurrentworkspacetomonitor, DP-1"
+
+        #mouse change workspace
+        "SUPER, mouse_down, workspace, e-1"
+        "SUPER, mouse_up, workspace, e+1"
+
+        #lock
+        "SUPER,L,exec,swaylock -f -S --grace 2 && sleep 2 && hyprctl dispatch dpms off"
+
+        #playerctl
+        ",KP_Enter, exec, playerctl play-pause"
+        ",KP_Add, exec, playerctl next"
+
+        "ALT, return, fullscreen, 1"
+        "ALT, Tab, movefocus, d"
       ];
 
       bindm = [
@@ -298,16 +322,20 @@ in {
         "float,title:^(mpv)$"
         "opacity 1.0 1.0,class:^(wofi)$"
       ];
+      workspace = [
+        "1, monitor:DP-1"
+        "2, monitor:DP-1"
+        "3, monitor:DP-1"
+        "4, monitor:DP-1"
+        "5, monitor:DP-1"
+      ];
     };
 
     # Submaps
     # extraConfig = ''
     #        # source = ~/.config/hypr/themes/catppuccin-macchiato.conf
     #        # source = ~/.config/hypr/themes/oxocarbon.conf
-    #        env = GBM_BACKEND,nvidia-drm
-    #        env = LIBVA_DRIVER_NAME,nvidia
     #        env = XDG_SESSION_TYPE,wayland
-    #        env = __GLX_VENDOR_LIBRARY_NAME,nvidia
     #        env = WLR_NO_HARDWARE_CURSORS,1
     #   #     # will switch to a submap called resize
     #   #     bind=$mainMod,R,submap,resize

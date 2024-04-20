@@ -1,8 +1,8 @@
 ''
-  font_family      Monolisa-Medium
-  bold_font        Monolisa-Bold
-  italic_font      Monolisa-MediumItalic
-  bold_italic_font Monolisa-BoldItalic
+  font_family      JetBrainsMono Nerd Font-Medium
+  bold_font        JetBrainsMono Nerd Font-Bold
+  italic_font      JetBrainsMono Nerd Font-MediumItalic
+  bold_italic_font JetBrainsMono Nerd Font-BoldItalic
   font_size 14.00
   # modify_font cell_height 125%
   # modify_font cell_width 95%

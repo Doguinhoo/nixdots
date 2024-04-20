@@ -1,5 +1,5 @@
 {
-  description = "Redyf's Flake";
+  description = "lucas's Flake";
 
   inputs = {
     # Core
@@ -18,8 +18,8 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    Neve.url = "github:redyf/Neve";
-    disko.url = "github:nix-community/disko";
+    Neve.url = "github:patrulhasirius/Neve";
+    #disko.url = "github:nix-community/disko";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     nix-ld-rs.url = "github:nix-community/nix-ld-rs";
@@ -30,10 +30,7 @@
       flake = false;
     };
 
-    monolisa-script = {
-      url = "github:redyf/test2";
-      flake = false;
-    };
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs = {
@@ -42,7 +39,7 @@
     hyprland,
     home-manager,
     spicetify-nix,
-    disko,
+    #disko,
     ...
   } @ inputs: let
     supportedSystems = ["x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin"];
@@ -54,7 +51,7 @@
     nixpkgsFor = forAllSystems (system: import nixpkgs {inherit system;});
   in {
     nixosConfigurations = {
-      redyf =
+      lucas =
         nixpkgs.lib.nixosSystem
         {
           system = "x86_64-linux";
@@ -63,23 +60,24 @@
               inputs
               hyprland
               spicetify-nix
-              disko
+              #disko
+              
               ;
           };
           modules = [
-            ./hosts/redyf/configuration.nix
+            ./hosts/lucas/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = false;
-                extraSpecialArgs = {inherit inputs spicetify-nix disko;};
-                users.redyf = ./home/desktop/home.nix;
+                extraSpecialArgs = {inherit inputs spicetify-nix;};
+                users.lucas = ./home/desktop/home.nix;
               };
             }
             hyprland.nixosModules.default
             {programs.hyprland.enable = true;}
-            disko.nixosModules.disko
+            #disko.nixosModules.disko
           ];
         };
       # wsl = nixpkgs.lib.nixosSystem {

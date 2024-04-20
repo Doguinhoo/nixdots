@@ -2,14 +2,14 @@
   mainBar = {
     position = "top";
     layer = "top";
-    height = 5;
+    height = 50;
     margin-top = 0;
     margin-bottom = 0;
     margin-left = 0;
     margin-right = 0;
-    modules-left = ["custom/launcher" "hyprland/workspaces"];
-    modules-center = ["clock"];
-    modules-right = ["cpu" "memory" "pulseaudio" "tray"];
+    modules-left = ["custom/launcher"];
+    modules-center = ["hyprland/workspaces"];
+    modules-right = ["cpu" "memory" "pulseaudio" "tray" "clock"];
 
     clock = {
       calendar = {

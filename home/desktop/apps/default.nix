@@ -1,16 +1,14 @@
 _: {
   imports = [
-    ./artix-game-launcher
     # ./brave
     ./discord
     # ./davinci-resolve
     ./firefox
-    ./floorp
-    ./insomnia
+    #./floorp
     ./misc
-    ./obs
+    #./obs
     ./spicetify
-    # ./steam
-    # ./vscode
+    #./steam
+    ./vscode
   ];
 }
