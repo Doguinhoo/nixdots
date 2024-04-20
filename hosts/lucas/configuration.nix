@@ -12,7 +12,7 @@
   boot = {
     kernelModules = ["v4l2loopback"]; # Autostart kernel modules on boot
     extraModulePackages = with config.boot.kernelPackages; [v4l2loopback]; # loopback module to make OBS virtual camera work
-    kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
+    kernelParams = [];
     supportedFilesystems = ["ntfs"];
     loader = {
       systemd-boot = {
@@ -44,41 +44,24 @@
   };
 
   hardware = {
-    nvidia = {
-      open = false;
-      nvidiaSettings = true;
-      powerManagement.enable = true;
-      modesetting.enable = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
     opengl = {
       enable = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [nvidia-vaapi-driver];
     };
   };
 
   environment = {
     variables = {
       EDITOR = "nvim";
-      GBM_BACKEND = "nvidia-drm";
-      LIBVA_DRIVER_NAME = "nvidia";
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-      __GL_GSYNC_ALLOWED = "1";
-      __GL_VRR_ALLOWED = "0"; # Controls if Adaptive Sync should be used. Recommended to set as “0” to avoid having problems on some games.
-      XCURSOR_THEME = "macOS-BigSur";
       XCURSOR_SIZE = "32";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
       GTK_THEME = "Catppuccin-Mocha-Compact-Blue-dark";
     };
     sessionVariables = {
       NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
-      WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor rendering issue on wlr nvidia.
-      DEFAULT_BROWSER = "${pkgs.brave}/bin/brave"; # Set default browser
+      #DEFAULT_BROWSER = "${pkgs.brave}/bin/brave"; # Set default browser
     };
-    shellAliases = {nvidia-settings = "nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings";};
   };
 
   # Configure console keymap
@@ -164,10 +147,10 @@
     libvirtd.enable = true;
   };
 
-  time.timeZone = "America/Bahia";
+  time.timeZone = "America/Sao_Paulo";
 
   i18n = {
-    defaultLocale = "pt_BR.UTF-8";
+    defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
       LC_ADDRESS = "pt_BR.UTF-8";
       LC_IDENTIFICATION = "pt_BR.UTF-8";
@@ -197,6 +180,25 @@
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
+    };
+  };
+
+  services.fstrim.enable = true;
+  services.gvfs.enable = true;
+  services.onedrive.enable = true;
+
+  programs = {
+    gamemode = {
+      enable = true;
+      settings = {
+        general = {
+          renice = 10;
+        };
+      };
+    };
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [thunar-archive-plugin thunar-volman];
     };
   };
 
@@ -274,7 +276,6 @@
         variant = "";
         layout = "br";
       };
-      #videoDrivers = ["nvidia"];
     };
     logmein-hamachi.enable = false;
     flatpak.enable = false;
@@ -296,11 +297,45 @@
     #};
   };
 
+  services.blueman.enable = true;
+  hardware.bluetooth = {
+    #package = pkgs.bluez;
+    enable = true;
+  };
+
+  #my raid
+  environment.etc."crypttab".text = ''
+    crypt-btrfs-5e8e UUID=5e8e19cc-3cf6-4eba-8be8-b09ca9c8d494 /root/btrfs-5e8e.keyfile luks
+    crypt-btrfs-8b0d UUID=8b0dc62d-4ee6-4713-815a-137c1dbe0729 /root/btrfs-8b0d.keyfile luks
+    crypt-btrfs-5b0f UUID=5b0f3855-837b-4653-977d-5254b4d6ce0c /root/btrfs-5b0f.keyfile luks
+  '';
+
   environment.systemPackages = with pkgs; [
     git
     playerctl
     inputs.xdg-portal-hyprland.packages.${system}.xdg-desktop-portal-hyprland
+    xorg.xhost
   ];
 
-  system.stateVersion = "22.11"; # Did you read the comment?
+  programs.corectrl = {
+    enable = true;
+    gpuOverclock.enable = true;
+  };
+
+  security.polkit.enable = true;
+
+  #steam
+  programs.steam = {
+    # enable steam as usual
+    #package = steam-with-pkgs;
+    enable = true;
+    # add extra compatibility tools to your STEAM_EXTRA_COMPAT_TOOLS_PATHS using the newly added `extraCompatPackages` option
+    extraCompatPackages = [
+      # add the packages that you would like to have in Steam's extra compatibility packages list
+      pkgs.proton-ge-bin
+      # etc.
+    ];
+  };
+
+  system.stateVersion = "24.05"; # Did you read the comment?
 }
