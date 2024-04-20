@@ -6,7 +6,7 @@
     # mangal # A fancy CLI app written in Go which scrapes, downloads and packs manga into different formats
 
     # Cloud
-    awscli2
+    #awscli2
 
     # Charm-cli tools
     # pop
@@ -16,20 +16,23 @@
     # minecraft
     # grapejuice
     # libpulseaudio
+    heroic
 
     # Office + PDF readers
-    wpsoffice # MS office alternative for linux
+    #wpsoffice # MS office alternative for linux
+    libreoffice-fresh
+    aspellDicts.pt_BR
     # zathura # PDF viewer
 
     # Notetaking
-    obsidian
+    #obsidian
 
     # Rice
     dunst # Notifications for your system
     cmatrix
     # onefetch
     xfce.thunar # Best GUI file manager
-    nitrogen # Wallpaper utility for X11
+    #nitrogen # Wallpaper utility for X11
 
     # Screenshot + extra utils
     grim # Screenshot tool for hyprland
@@ -47,8 +50,45 @@
     nerdfix # Fix obsolete nerd font icons
     # traceroute # Tool to access the X clipboard from a console application
     tree-sitter # A parser generator tool and an incremental parsing library
-    appimage-run # Run appimage files in the terminal
+    #appimage-run # Run appimage files in the terminal
     polkit_gnome
-    dmenu
+    #dmenu
+    corectrl
+    dolphin
+    ark
+
+    # nix meta
+    nix-inspect
+
+    # compatibility
+    google-chrome
+    breeze-icons # for QT
+
+    # research 
+    zotero
+
+    # system cleanup
+    czkawka
+    qdirstat
+
+    # communication
+    signal-desktop
+
+    # passwords
+    keepassxc
+
+    # backup 
+    onedrive
+
+    # linux isos
+    qbittorrent
+
+    # dev
+    gh
+
+    #bluetooth
+    blueman
+
+
   ];
 }
