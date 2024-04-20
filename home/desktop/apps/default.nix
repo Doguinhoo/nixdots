@@ -8,7 +8,7 @@ _: {
     # ./floorp
     #./insomnia
     ./misc
-    ./obs
+    #./obs
     ./spicetify
     # ./steam
     # ./vscode
