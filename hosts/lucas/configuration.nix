@@ -3,7 +3,25 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  steam-with-pkgs = pkgs.steam.override {
+    extraPkgs = pkgs:
+      with pkgs; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib
+        libkrb5
+        keyutils
+        gamescope
+        mangohud
+      ];
+  };
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -11,9 +29,9 @@
 
   boot = {
     kernelModules = ["v4l2loopback"]; # Autostart kernel modules on boot
-    extraModulePackages = with config.boot.kernelPackages; [v4l2loopback]; # loopback module to make OBS virtual camera work
+    extraModulePackages = with config.boot.kernelPackages; [v4l2loopback xpadneo]; # loopback module to make OBS virtual camera work
     kernelParams = [];
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = ["ntfs" "hid_xpadneo"];
     loader = {
       systemd-boot = {
         enable = false;
@@ -44,6 +62,7 @@
   };
 
   hardware = {
+    xpadneo.enable = true;
     opengl = {
       enable = true;
       driSupport32Bit = true;
@@ -60,6 +79,7 @@
     };
     sessionVariables = {
       NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
+      DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
       #DEFAULT_BROWSER = "${pkgs.brave}/bin/brave"; # Set default browser
     };
   };
@@ -69,7 +89,7 @@
 
   networking = {
     networkmanager.enable = true;
-    enableIPv6 = false;
+    #enableIPv6 = false;
     # no need to wait interfaces to have an IP to continue booting
     dhcpcd.wait = "background";
     # avoid checking if IP is already taken to boot a few seconds faster
@@ -96,6 +116,11 @@
   # Enable and configure `doas`.
   security = {
     rtkit.enable = true;
+    pam.services.swaylock = {
+      text = ''
+        auth include login
+      '';
+    };
     sudo = {
       enable = false;
     };
@@ -327,7 +352,7 @@
   #steam
   programs.steam = {
     # enable steam as usual
-    #package = steam-with-pkgs;
+    package = steam-with-pkgs;
     enable = true;
     # add extra compatibility tools to your STEAM_EXTRA_COMPAT_TOOLS_PATHS using the newly added `extraCompatPackages` option
     extraCompatPackages = [
