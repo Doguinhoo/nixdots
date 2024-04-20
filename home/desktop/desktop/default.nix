@@ -5,5 +5,6 @@ _: {
     ./hyprland
     # ./awesomewm.nix
     #./xmonad.nix
+    ./swaylock
   ];
 }
