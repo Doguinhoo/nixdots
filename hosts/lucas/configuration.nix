@@ -209,8 +209,6 @@ in {
     };
   };
 
-  
-
   programs = {
     gamemode = {
       enable = true;
@@ -228,12 +226,12 @@ in {
 
   # Change systemd stop job timeout in NixOS configuration (Default = 90s)
   systemd = {
-     user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome-authentication-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = ["graphical-session.target"];
+      wants = ["graphical-session.target"];
+      after = ["graphical-session.target"];
+      serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         Restart = "on-failure";
@@ -271,7 +269,7 @@ in {
         # enable this module
         enable = true;
         # defaults (no need to be set unless modified)
-    };
+      };
     };
 
     displayManager = {
@@ -334,16 +332,16 @@ in {
     #  profiles = {
     #    lucas = {
     #      config = {
-            #DP-0 = {
-            #  enable = true;
-            #  primary = true;
-            #  mode = "1920x1080";
-            #  rate = "165.00";
-            #  position = "0x0";
-            #};
-     #     };
-     #   };
-     # };
+    #DP-0 = {
+    #  enable = true;
+    #  primary = true;
+    #  mode = "1920x1080";
+    #  rate = "165.00";
+    #  position = "0x0";
+    #};
+    #     };
+    #   };
+    # };
     #};
   };
 

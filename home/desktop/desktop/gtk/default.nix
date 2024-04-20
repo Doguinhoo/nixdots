@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
@@ -7,7 +6,7 @@
     gtk.enable = true;
     x11.enable = true;
   };
-  
+
   gtk = {
     #enable = true;
     #cursorTheme = {
@@ -15,8 +14,6 @@
     #  package = pkgs.apple-cursor;
     #  size = 32; # Affects gtk applications as the name suggests
     #};
-
-
 
     theme = {
       name = "Catppuccin-Macchiato-Compact-Blue-dark";

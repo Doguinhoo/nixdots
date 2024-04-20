@@ -1,5 +1,4 @@
-{ rustPlatform }:
-
+{rustPlatform}:
 rustPlatform.buildRustPackage {
   pname = "catsay";
   version = "0.1.0";

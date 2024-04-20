@@ -31,8 +31,6 @@
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
-
-    
   };
 
   outputs = {
@@ -63,6 +61,7 @@
               hyprland
               spicetify-nix
               #disko
+              
               ;
           };
           modules = [
@@ -72,7 +71,7 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = false;
-                extraSpecialArgs = {inherit inputs spicetify-nix ;};
+                extraSpecialArgs = {inherit inputs spicetify-nix;};
                 users.lucas = ./home/desktop/home.nix;
               };
             }

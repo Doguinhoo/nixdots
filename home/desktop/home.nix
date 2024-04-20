@@ -31,7 +31,6 @@
     };
     overlays = with inputs; [
       # neovim-nightly-overlay.overlay
-      
     ];
   };
 
@@ -42,7 +41,6 @@
     "$HOME/.local/bin"
   ];
 
-  
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {

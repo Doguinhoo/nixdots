@@ -64,7 +64,7 @@
     google-chrome
     breeze-icons # for QT
 
-    # research 
+    # research
     zotero
 
     # system cleanup
@@ -77,7 +77,7 @@
     # passwords
     keepassxc
 
-    # backup 
+    # backup
     onedrive
 
     # linux isos
@@ -88,7 +88,5 @@
 
     #bluetooth
     blueman
-
-
   ];
 }
