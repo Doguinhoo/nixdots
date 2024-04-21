@@ -27,7 +27,7 @@ _: ''
       color: #6c7086;
   }
   #workspaces button.active {
-      color: #b4befe;
+      color: #bf215e;
   }
 
   #tray, #pulseaudio, #network, #cpu, #memory, #disk, #clock {
