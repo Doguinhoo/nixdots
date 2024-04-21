@@ -56,6 +56,7 @@
     corectrl
     dolphin
     ark
+    htop
 
     # nix meta
     nix-inspect
