@@ -1,5 +1,5 @@
 {
-  description = "lucas's Flake";
+  description = "leonardo's Flake";
 
   inputs = {
     # Core
@@ -51,7 +51,7 @@
     nixpkgsFor = forAllSystems (system: import nixpkgs {inherit system;});
   in {
     nixosConfigurations = {
-      lucas =
+      leonardo =
         nixpkgs.lib.nixosSystem
         {
           system = "x86_64-linux";
@@ -65,14 +65,14 @@
               ;
           };
           modules = [
-            ./hosts/lucas/configuration.nix
+            ./hosts/leonardo-thinkpad/configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = false;
                 extraSpecialArgs = {inherit inputs spicetify-nix;};
-                users.lucas = ./home/desktop/home.nix;
+                users.leonardo= ./home/desktop/home.nix;
               };
             }
             hyprland.nixosModules.default

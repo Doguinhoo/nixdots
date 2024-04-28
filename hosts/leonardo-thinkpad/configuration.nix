@@ -104,9 +104,9 @@ in {
 
   users = {
     users = {
-      lucas = {
+      leonardo = {
         isNormalUser = true;
-        description = "lucas";
+        description = "leonardo";
         initialPassword = "123456";
         shell = pkgs.zsh;
         extraGroups = ["networkmanager" "wheel" "input" "docker" "kvm" "libvirtd"];
@@ -129,7 +129,7 @@ in {
       enable = true;
       extraRules = [
         {
-          users = ["lucas"];
+          users = ["leonardo"];
           keepEnv = true;
           persist = true;
         }
@@ -274,7 +274,7 @@ in {
 
     displayManager = {
       defaultSession = "hyprland";
-      autoLogin.user = "lucas";
+      autoLogin.user = "leonardo";
     };
 
     sshd.enable = true;
@@ -321,7 +321,7 @@ in {
         };
       };
       xkb = {
-        variant = "";
+        variant = "thinkpad";
         layout = "br";
       };
     };
@@ -330,7 +330,7 @@ in {
     #autorandr = {
     #  enable = true;
     #  profiles = {
-    #    lucas = {
+    #    leonardo = {
     #      config = {
     #DP-0 = {
     #  enable = true;
@@ -350,13 +350,6 @@ in {
     #package = pkgs.bluez;
     enable = true;
   };
-
-  #my raid
-  environment.etc."crypttab".text = ''
-    crypt-btrfs-5e8e UUID=5e8e19cc-3cf6-4eba-8be8-b09ca9c8d494 /root/btrfs-5e8e.keyfile luks
-    crypt-btrfs-8b0d UUID=8b0dc62d-4ee6-4713-815a-137c1dbe0729 /root/btrfs-8b0d.keyfile luks
-    crypt-btrfs-5b0f UUID=5b0f3855-837b-4653-977d-5254b4d6ce0c /root/btrfs-5b0f.keyfile luks
-  '';
 
   environment.systemPackages = with pkgs; [
     git

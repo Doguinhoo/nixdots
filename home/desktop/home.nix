@@ -1,7 +1,7 @@
 {inputs, ...}: {
   home = {
-    username = "lucas";
-    homeDirectory = "/home/lucas";
+    username = "leonardo";
+    homeDirectory = "/home/leonardo";
     stateVersion = "22.11";
   };
 
